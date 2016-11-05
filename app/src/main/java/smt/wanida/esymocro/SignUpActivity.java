@@ -1,5 +1,6 @@
 package smt.wanida.esymocro;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -56,6 +57,32 @@ public class SignUpActivity extends AppCompatActivity {
             } // onclick
         });
 
+        //Image Controller
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Intent to Other App
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(intent, "โปรดเลือกรูป"), 0);
+
+
+            } // Onclick
+        });
 
     } // Main Method
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if ((requestCode) == 0 && (resultCode) == RESULT_OK ) {
+            //Resule Success
+            Log.d("5novV1", "Result OK");
+
+
+        } //if
+
+    } // onActivityResult
 } //  Main Class
