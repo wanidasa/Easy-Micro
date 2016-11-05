@@ -2,4 +2,7 @@
     <string name="app_name">Esy Micro</string>
 
     <string name="singUp">สมัครสมาชิก</string>
+    <string name="name">Name :</string>
+    <string name="user">User :</string>
+    <string name="password">Password :</string>
 </resources>
