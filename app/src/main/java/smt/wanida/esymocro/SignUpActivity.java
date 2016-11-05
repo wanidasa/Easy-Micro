@@ -1,6 +1,9 @@
 package smt.wanida.esymocro;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +19,7 @@ public class SignUpActivity extends AppCompatActivity {
     private ImageView imageView;
     private Button button;
     private String nameString, userString, passwordString;
-
+    private Uri uri;
 
 
     @Override
@@ -81,6 +84,14 @@ public class SignUpActivity extends AppCompatActivity {
             //Resule Success
             Log.d("5novV1", "Result OK");
 
+            //Setup choose image to ImageView
+            uri = data.getData();
+            try{
+                Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
+                imageView.setImageBitmap(bitmap);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
 
         } //if
 
