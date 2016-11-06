@@ -7,4 +7,6 @@
     <string name="password">Password :</string>
     <string name="title_naveSpace">Have Space</string>
     <string name="Message_haveSpace">กรูณากรอกทุกช่อง</string>
+    <string name="title_ImageChoose">ยังไม่ได้เลือกรูปภาพ</string>
+    <string name="massesge_ImageChoose">โปรดเลือกรูปภาพ</string>
 </resources>

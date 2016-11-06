@@ -61,7 +61,9 @@
                 android:id="@+id/editText"
                 android:hint="@string/name"
                 android:textColor="@color/aText"
-                android:textColorHint="@color/aText" />
+                android:textColorHint="@color/aText"
+                android:textSize="@dimen/h2"
+                android:padding="5dp" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -71,7 +73,9 @@
                 android:id="@+id/editText2"
                 android:hint="@string/user"
                 android:textColor="@color/aText"
-                android:textColorHint="@color/aText" />
+                android:textColorHint="@color/aText"
+                android:textSize="@dimen/h2"
+                android:padding="5dp" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -81,7 +85,9 @@
                 android:id="@+id/editText3"
                 android:hint="@string/password"
                 android:textColor="@color/aText"
-                android:textColorHint="@color/aText" />
+                android:textColorHint="@color/aText"
+                android:textSize="@dimen/h2"
+                android:padding="5dp" />
         </LinearLayout>
 
     </LinearLayout>
