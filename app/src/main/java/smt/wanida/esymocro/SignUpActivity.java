@@ -185,8 +185,16 @@ public class SignUpActivity extends AppCompatActivity {
             super.onPostExecute(s);
 
             Log.d("6NovV2", "Result ==>" + s);
+            if (Boolean.parseBoolean(s)) {
+                Toast.makeText(SignUpActivity.this,"Tank you Save OK",Toast.LENGTH_SHORT).show();
+                finish();
 
-        } //on pos
+            } else {
+                Toast.makeText(SignUpActivity.this,"Error Can not Save OK",Toast.LENGTH_SHORT).show();
+
+            }
+
+        } //on post
     } // add new user class
 
     @Override
