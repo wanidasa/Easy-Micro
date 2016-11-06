@@ -5,6 +5,8 @@
     <dimen name="h1">30sp</dimen>
     <dimen name="h2">20sp</dimen>
     <dimen name="myMargin">20dp</dimen>
+    <dimen name="icon">120dp</dimen>
+
 
 
 </resources>

@@ -9,10 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 // Expllicit การประกาศตัวแปร  จะต้ะองอยู่นอก class ทั้งหมด
@@ -72,6 +76,9 @@ public class MainActivity extends AppCompatActivity {
 
     private class GetUser extends AsyncTask<String, Void, String> {
         private Context context;
+        private String[] nameString, imageString;
+        private String truePasswordString;
+        private boolean aBoolean = true;
 
         public GetUser(Context context) {
             this.context = context;
@@ -99,6 +106,55 @@ public class MainActivity extends AppCompatActivity {
 
             Log.d("6NovV3", "Jsom ==>" + s);
 
+            try {
+                JSONArray jsonArray = new JSONArray(s);
+
+                nameString = new String[jsonArray.length()];
+                imageString = new String[jsonArray.length()];
+                for (int i=0; i<jsonArray.length();i++) {
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                    nameString[i] = jsonObject.getString("Name");
+                    imageString[i] = jsonObject.getString("Image");
+
+                    //check log
+                    Log.d("6NovV4", "Name[" + i + "] ==> " + nameString[i]);
+
+                    if (userString.equals(jsonObject.getString("User"))) {
+                        aBoolean = false;
+                        truePasswordString = jsonObject.getString("Password");
+
+                    }
+
+                } // for
+
+                if (aBoolean) {
+                    MyAlert myAlert = new MyAlert(context,
+                            R.drawable.rat48,
+                            "User False",
+                            "No " + userString + " in my Database");
+                } else if (passwordString.equals(truePasswordString)) {
+                    Toast.makeText(context, "Welcome", Toast.LENGTH_SHORT).show();
+
+                    //Intent
+                    Intent intent = new Intent(MainActivity.this, ServiceActivity.class);
+                    intent.putExtra("Name", nameString);
+                    intent.putExtra("Image", imageString);
+                    startActivity(intent);
+                    finish();
+
+                } else {
+                    MyAlert myAlert = new MyAlert(context,
+                            R.drawable.bird48,
+                            "Password False",
+                            "Please try Again... Password False");
+                    myAlert.myDailog();
+                }
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }//onpost
     } // calss
 
